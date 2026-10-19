@@ -1,0 +1,1046 @@
+
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Хайрт найз Биндэръяадаа ❤️</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Lora:ital,wght@0,400;0,600;1,400&display=swap">
+
+<style>
+:root {
+  --bg: #0d1829;
+  --cover: #14233c;
+  --paper: #eef2f7;
+  --ink: #1b2430;
+  --soft: #5b6b82;
+  --gold: #e8b04b;
+  --sky: #7fb2e5;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background: var(--bg);
+  font-family: 'Lora', Georgia, serif;
+  color: var(--ink);
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* НОМ */
+.book {
+  position: fixed;
+  inset: 0;
+  perspective: 1800px;
+  overflow: hidden;
+}
+
+/* ХУУДАС */
+.pg {
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  transform-origin: left center;
+  backface-visibility: hidden;
+
+  transition:
+    transform .95s cubic-bezier(.55,.05,.25,1),
+    opacity .5s .45s;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+
+  padding:
+    calc(env(safe-area-inset-top,0px) + 22px)
+    20px
+    calc(env(safe-area-inset-bottom,0px) + 78px);
+
+  text-align: center;
+  overflow-y: auto;
+  box-shadow: inset 14px 0 18px -12px #0004;
+}
+
+.pg.turned {
+  transform: rotateY(-115deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ЗАХИАНЫ БИЧИГ */
+.letter {
+  font-family: 'Marck Script', cursive;
+  font-size: clamp(17px, 4.25vw, 20px);
+  line-height: 1.43;
+  max-width: 37ch;
+  text-align: left;
+  color: var(--ink);
+  margin-block: auto;
+}
+
+.letter .to {
+  display: block;
+  font-size: 27px;
+  line-height: 1.18;
+  color: var(--cover);
+  margin-bottom: 12px;
+}
+
+.letter .from {
+  display: block;
+  text-align: right;
+  margin-top: 13px;
+  color: var(--cover);
+}
+
+h2 {
+  font-family: 'Marck Script', cursive;
+  font-size: 33px;
+  font-weight: normal;
+  color: var(--cover);
+  margin-bottom: 15px;
+}
+
+.pg > h2:first-child {
+  margin-top: auto;
+}
+
+.lyrics {
+  font-size: 17px;
+  line-height: 1.75;
+  font-style: italic;
+  text-align: center;
+  max-width: 31ch;
+  margin-bottom: auto;
+}
+
+/* ДУРСАМЖИЙН ЗУРАГ */
+.photo {
+  width: min(74vw, 290px);
+  background: white;
+  padding: 10px 10px 38px;
+  box-shadow: 0 10px 26px #14233c40;
+  transform: rotate(-2.5deg);
+  margin-top: auto;
+}
+
+.photo img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+}
+
+.cap {
+  font-family: 'Marck Script', cursive;
+  font-size: 24px;
+  color: var(--cover);
+  margin-top: 25px;
+  margin-bottom: auto;
+}
+
+/* СҮҮЛИЙН ХУУДАС */
+.pg.fin {
+  background: #0d1829;
+  color: #f3e7cc;
+  padding: 0 0 calc(env(safe-area-inset-bottom,0px) + 85px);
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.fin svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.fin .msg {
+  position: relative;
+  padding: 0 24px;
+  opacity: 0;
+  transform: translateY(10px);
+
+  transition:
+    opacity 1.4s 6.5s,
+    transform 1.4s 6.5s;
+}
+
+.fin.show .msg {
+  opacity: 1;
+  transform: none;
+}
+
+.msg h2 {
+  font-size: clamp(29px,8vw,40px);
+  color: #fff6e0;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 14px #0009;
+}
+
+.msg p {
+  font-size: 15px;
+  color: #c8d4e6;
+}
+
+/* НИСЭХ ОНГОЦ */
+.plane {
+  opacity: 0;
+}
+
+.fin.show .plane {
+  opacity: 1;
+  animation: fly 7s ease-in 4s infinite;
+}
+
+@keyframes fly {
+  0% {
+    transform: translate(20px,0);
+  }
+  35% {
+    transform: translate(150px,0);
+  }
+  100% {
+    transform: translate(420px,-270px) rotate(-22deg);
+  }
+}
+
+/* АНИМЕЙШН */
+.air {
+  opacity: 0;
+}
+
+.fin.show .air {
+  animation: appear 1.2s 3.5s forwards;
+}
+
+.fin.show .study {
+  animation: disappear 1s 3.5s forwards;
+}
+
+@keyframes appear {
+  to { opacity: 1; }
+}
+
+@keyframes disappear {
+  to { opacity: 0; }
+}
+
+.pen {
+  animation: writing .5s ease-in-out infinite alternate;
+}
+
+@keyframes writing {
+  to {
+    transform: translate(-14px,6px) rotate(-8deg);
+  }
+}
+
+.cloud {
+  animation: drift 26s linear infinite;
+}
+
+.cloud.b {
+  animation-duration: 38s;
+  animation-delay: -14s;
+}
+
+@keyframes drift {
+  from { transform: translateX(-120px); }
+  to { transform: translateX(480px); }
+}
+
+.twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  50% { opacity: .25; }
+}
+
+/* ДУУНЫ ТОВЧ */
+.songbtn {
+  margin-top: 18px;
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1.5px solid var(--gold);
+  background: rgba(13,24,41,.8);
+  color: var(--gold);
+  font: inherit;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* ХУУДАСНЫ УДИРДЛАГА */
+.nav {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 17px;
+
+  padding:
+    12px 12px
+    calc(env(safe-area-inset-bottom,0px) + 14px);
+}
+
+.nav button {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1.5px solid var(--gold);
+  background: rgba(13,24,41,.85);
+  color: var(--gold);
+  font-size: 23px;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  flex-shrink: 0;
+}
+
+.nav button:disabled {
+  opacity: .25;
+}
+
+.nav button:focus-visible,
+.songbtn:focus-visible {
+  outline: 3px solid var(--sky);
+  outline-offset: 2px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #6c7d97;
+  transition: .3s;
+}
+
+.dots i.on {
+  background: var(--gold);
+  transform: scale(1.4);
+}
+
+@media (max-height: 650px) {
+  .letter {
+    font-size: 16px;
+    line-height: 1.36;
+  }
+  .photo {
+    width: min(62vw,240px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pg { transition: none; }
+  .fin.show .msg {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .fin.show .air {
+    opacity: 1;
+    animation: none;
+  }
+  .fin.show .study {
+    opacity: 0;
+    animation: none;
+  }
+  .fin.show .plane {
+    opacity: 1;
+    animation: none;
+  }
+  .cloud, .twinkle, .pen {
+    animation: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<main class="book" id="book">
+
+<!-- ХУУДАС 1 -->
+<section class="pg">
+  <p class="letter">
+    <span class="to">
+      Хайртай найз Биндэръяадаа ❤️
+    </span>
+
+    Энэ захиаг уншиж буй өдрийн
+    мэндийг хүргэе!
+
+    <br><br>
+
+    Миний найз өдийд нисэх гээд бэлдэж
+    байгаа байх. Энэ чухал мөчид,
+    тэр олон найз нөхөд, гэр бүлийнхэн,
+    дотнын хүмүүсийнх нь хажууд найз нь
+    байхгүй байгаад уучлаарай.
+
+    Энэ захиаг уншаад миний найзын
+    гомдол, уур бага ч болов
+    тайлагдаасай гэж хүсэж байна.
+  </p>
+</section>
+
+<!-- ХУУДАС 2 -->
+<section class="pg">
+  <p class="letter">
+
+    2026.10.27.
+
+    <br><br>
+
+    Найз нь чиний төрсөн өдрийг
+    санаж байгаа шүү.
+
+    Хангалттай их уулзаж, хангалттай
+    сайн найз байж чаддаггүйд
+    минь уучлаарай.
+
+    <br><br>
+
+    Гэхдээ нэг зүйлийг мэдэж байгаарай.
+    Миний найз бол үнэхээр хамгийн
+    мундаг нь шүү.
+
+    Өөрийнхөөрөө, нээлттэй,
+    өөртөө итгэлтэй, бусдаас өөрийн
+    гэсэн онцлогтой, хэн хүнд байдаггүй
+    тийм гоё зан чанартай хүн.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 3 -->
+<section class="pg">
+  <p class="letter">
+
+    Төрсөн өдрөөрөө найз нь жаахан
+    гомдсон байж магадгүй.
+
+    <br><br>
+
+    Яагаад гэвэл хамгийн түрүүнд
+    хамт байгаасай гэж хүссэн
+    хүмүүсийн минь нэг нь чи
+    байсан болохоор тэр байх.
+
+    <br><br>
+
+    Гэхдээ үүндээ муу зүйл
+    бодоогүй ээ, найз нь.
+
+    Бид хоёрын нөхөрлөл тийм
+    жижигхэн зүйлээс болж
+    өөрчлөгдөхгүй гэдгийг мэдэж
+    байгаа болохоор одоо
+    энэ чухал биш ээ.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 4 -->
+<section class="pg">
+  <p class="letter">
+
+    Харин одоо миний найз хүний
+    нутгийг зорьж байна.
+
+    Шинэ газар, шинэ орчин,
+    шинэ амьдрал чамайг хүлээж байгаа.
+
+    <br><br>
+
+    Эхэндээ хэцүү, ганцаардмаар
+    үе зөндөө гарч магадгүй.
+
+    Тийм үедээ бүхнийг ганцаараа
+    давах гэж хичээх хэрэггүй шүү.
+
+    <br><br>
+
+    Хааяа ч болов найз руугаа залгаад,
+    хэрэгтэй үедээ ярьж, хуучилж,
+    юу болж байгаагаа хэлж байгаарай.
+
+    Хол байна гэдэг чинь холбоогүй
+    болно гэсэн үг биш шүү дээ.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 5 -->
+<section class="pg">
+  <p class="letter">
+
+    Бас тамхи бага татна шүү.
+
+    Угаасаа миний найз очоод
+    vape ч олдохгүй байх, хаха.
+
+    <br><br>
+
+    Хичээл номоо сайн хийгээд,
+    хэл усаа сайн сураад,
+    хүн шиг хүн болчихоод
+    эргээд уулзалдъя.
+
+    <br><br>
+
+    Миний найз чадна аа,
+    найз нь чамд итгэж байгаа.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 6 -->
+<section class="pg">
+  <p class="letter">
+
+    Ирээдүйд ч гэсэн яг энэ хэвээрээ,
+    бие биедээ гомдож, хэрэлдэж,
+    муудалцаж, буцаад эвлэрээд,
+    юу ч болоогүй юм шиг инээлддэг
+    хэвээрээ байгаарай.
+
+    <br><br>
+
+    Хэдий хол байсан ч,
+    хэдэн жил өнгөрсөн ч
+    эргээд уулзахад бид хоёрын
+    нөхөрлөл яг л өчигдөр уулзсан
+    юм шиг хэвээрээ байгаасай
+    гэж хүсэж байна.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 7 -->
+<section class="pg">
+  <p class="letter">
+
+    Эцэст нь хэлэхэд, найзаасаа
+    үнэхээр их уучлалт гуйж байна.
+
+    <br><br>
+
+    Амьдралынх нь ийм чухал,
+    гоё өдөр хажууд нь байж
+    чадаагүйд минь уучлаарай.
+
+    <br><br>
+
+    Гэхдээ эргээд ирэхэд нь
+    хамгийн түрүүнд уулзах
+    болно оо, амлаж байна.
+
+  </p>
+</section>
+
+<!-- ХУУДАС 8 -->
+<section class="pg">
+  <p class="letter">
+
+    Хаана ч очсон өөрийнхөөрөө,
+    яг одоогийнх шигээ гэрэлтэй,
+    өөртөө итгэлтэй хэвээрээ байгаарай.
+
+    <br><br>
+
+    Хүн бүрийн амьдралд мартагддаггүй
+    хүмүүс гэж байдаг даа.
+
+    Миний хувьд тэдний нэг нь чи шүү.
+
+    <br><br>
+
+    Хайртай шүү, найздаа.
+    Биеэ сайн бодоорой. ❤️
+
+    <span class="from">
+      Хүндэтгэсэн: ГАНХҮҮ
+    </span>
+
+  </p>
+</section>
+
+<!-- ХУУДАС 9 -->
+<section class="pg">
+
+  <h2>Чи чадна ❤️</h2>
+
+  <p class="lyrics">
+    Хэцүү өдөр бүхэн чамайг
+    илүү хүчтэй болгоно.
+
+    <br><br>
+
+    Алхам бүр чинь зорилгод
+    чинь ойртуулна.
+
+    <br><br>
+
+    Бид чамд итгэж байна.
+  </p>
+
+</section>
+
+<!-- ХУУДАС 10: ЗУРАГ -->
+<section class="pg">
+
+  <div class="photo">
+    <img
+      src="IMG_2245.jpeg"
+      alt="Бидний хамгийн гоё өдөр"
+    >
+  </div>
+
+  <p class="cap">
+    Бидний хамгийн гоё өдөр ❤️
+  </p>
+
+</section>
+
+<!-- ХУУДАС 11: ТӨГСГӨЛ -->
+<section class="pg fin" id="fin">
+
+<svg viewBox="0 0 360 640"
+     preserveAspectRatio="xMidYMid slice"
+     aria-hidden="true">
+
+<defs>
+  <linearGradient id="sky"
+      x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#050b16"/>
+    <stop offset=".6" stop-color="#16294a"/>
+    <stop offset="1" stop-color="#3a4f78"/>
+  </linearGradient>
+</defs>
+
+<!-- ШӨНИЙН ТЭНГЭР -->
+<g class="air">
+
+  <rect width="360" height="640"
+        fill="url(#sky)"/>
+
+  <!-- Сар -->
+  <circle cx="285" cy="95" r="22"
+          fill="#fff3cf"/>
+  <circle cx="294" cy="89" r="20"
+          fill="#0a1426"/>
+
+  <!-- Одод -->
+  <g fill="#ffffff">
+    <circle class="twinkle"
+      cx="50" cy="70" r="1.4"/>
+
+    <circle class="twinkle"
+      cx="120" cy="40" r="1.1"/>
+
+    <circle class="twinkle"
+      cx="200" cy="110" r="1.3"/>
+
+    <circle class="twinkle"
+      cx="320" cy="170" r="1.1"/>
+
+    <circle class="twinkle"
+      cx="80" cy="170" r="1.2"/>
+  </g>
+
+  <!-- Үүлс -->
+  <g fill="#9fb4d6" opacity=".35">
+    <ellipse class="cloud"
+      cx="60" cy="210" rx="46" ry="11"/>
+
+    <ellipse class="cloud b"
+      cx="40" cy="290" rx="60" ry="13"/>
+  </g>
+
+  <!-- Нисэх буудал -->
+  <rect x="0" y="470"
+        width="360" height="170"
+        fill="#1a2538"/>
+
+  <rect x="0" y="470"
+        width="360" height="3"
+        fill="#e8b04b" opacity=".6"/>
+
+  <!-- Барилга -->
+  <g fill="#243551">
+    <rect x="10" y="400"
+      width="140" height="70"/>
+
+    <rect x="150" y="425"
+      width="90" height="45"/>
+
+    <rect x="252" y="380"
+      width="14" height="90"/>
+
+    <rect x="244" y="368"
+      width="30" height="16" rx="3"/>
+  </g>
+
+  <!-- Цонхны гэрлүүд -->
+  <g fill="#ffd98a">
+    <rect x="22" y="414" width="14" height="10"/>
+    <rect x="46" y="414" width="14" height="10"/>
+    <rect x="70" y="414" width="14" height="10"/>
+    <rect x="94" y="414" width="14" height="10"/>
+    <rect x="118" y="414" width="14" height="10"/>
+
+    <rect x="22" y="438" width="14" height="10"/>
+    <rect x="70" y="438" width="14" height="10"/>
+    <rect x="118" y="438" width="14" height="10"/>
+    <rect x="164" y="438" width="14" height="10"/>
+    <rect x="196" y="438" width="14" height="10"/>
+  </g>
+
+  <!-- Нисэх зурвас -->
+  <line x1="0" y1="540"
+        x2="360" y2="540"
+        stroke="#e8b04b"
+        stroke-width="3"
+        stroke-dasharray="22 16"
+        opacity=".8"/>
+
+  <!-- Онгоц -->
+  <g class="plane">
+    <g transform="translate(0 515)">
+
+      <ellipse cx="42" cy="0"
+        rx="42" ry="9" fill="#f2f5fa"/>
+
+      <path d="M26 -2 L8 -26 L22 -26 L48 -2Z"
+        fill="#cfd8e6"/>
+
+      <path d="M26 2 L10 22 L24 22 L48 2Z"
+        fill="#b9c5d8"/>
+
+      <path d="M2 -4 L-6 -22 L6 -22 L16 -4Z"
+        fill="#e8b04b"/>
+
+      <g fill="#7fb2e5">
+        <circle cx="58" cy="-2" r="2"/>
+        <circle cx="66" cy="-2" r="2"/>
+        <circle cx="74" cy="-1.5" r="1.8"/>
+      </g>
+    </g>
+  </g>
+</g>
+
+<!-- ХИЧЭЭЛ ХИЙЖ БУЙ ДҮР -->
+<g class="study">
+
+  <rect width="360" height="640"
+        fill="#1a2438"/>
+
+  <circle cx="235" cy="330" r="150"
+        fill="#e8b04b" opacity=".16"/>
+
+  <!-- Ширээ -->
+  <rect x="0" y="470"
+    width="360" height="170"
+    fill="#3a2c25"/>
+
+  <!-- Хүн -->
+  <rect x="118" y="385"
+    width="84" height="100"
+    rx="30" fill="#5b7fb5"/>
+
+  <circle cx="160" cy="352"
+    r="32" fill="#e6bf9a"/>
+
+  <path d="M128 350 A32 32 0 0 1 192 350 Q160 336 128 350Z"
+    fill="#1b1b24"/>
+
+  <!-- Ном -->
+  <rect x="120" y="462"
+    width="124" height="10"
+    rx="2" fill="#eef2f7"/>
+
+  <rect x="120" y="470"
+    width="124" height="4"
+    fill="#b9c5d8"/>
+
+  <!-- Үзэг -->
+  <g class="pen">
+    <rect x="196" y="440"
+      width="38" height="6"
+      rx="3" fill="#e8b04b"/>
+  </g>
+
+  <!-- Гэрэл -->
+  <path d="M285 470 V385 L245 352"
+    stroke="#c8d4e6"
+    stroke-width="5"
+    fill="none"
+    stroke-linecap="round"/>
+
+  <path d="M228 345 L262 340 L250 366Z"
+    fill="#e8b04b"/>
+
+  <text x="180" y="140"
+    text-anchor="middle"
+    font-size="26"
+    fill="#f3e7cc"
+    font-family="Marck Script,cursive">
+    Өдөр бүр хичээнгүйлэн...
+  </text>
+
+</g>
+</svg>
+
+<!-- ТӨГСГӨЛИЙН МЭНДЧИЛГЭЭ -->
+<div class="msg">
+
+  <h2>
+    Эргэж уулзах өдрийг
+    тэсэн ядан хүлээж байя ❤️
+  </h2>
+
+  <p>
+    Аюулгүй яваарай, Биндэръяа.
+  </p>
+
+  <button
+    id="song"
+    class="songbtn"
+    type="button">
+    ♪ Дуу сонсох
+  </button>
+
+  <!-- GITHUB ДЭЭР БАЙГАА MP3 -->
+  <audio
+    id="aud"
+    src="THE HIGHWAY - Хайж явсан уу ( Haij ywsanuu 3 naiz OST ).mp3"
+    preload="metadata">
+  </audio>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- ХУУДАС СОЛИХ ТОВЧ -->
+<nav class="nav">
+
+  <button id="prev"
+    type="button"
+    aria-label="Өмнөх хуудас">‹</button>
+
+  <div class="dots" id="dots"></div>
+
+  <button id="next"
+    type="button"
+    aria-label="Дараагийн хуудас">›</button>
+
+</nav>
+
+<script>
+(function() {
+
+  const pages = Array.from(
+    document.querySelectorAll('.pg')
+  );
+
+  const n = pages.length;
+  let cur = 0;
+
+  const dots = document.getElementById('dots');
+  const prev = document.getElementById('prev');
+  const next = document.getElementById('next');
+  const fin = document.getElementById('fin');
+  const book = document.getElementById('book');
+
+  const aud = document.getElementById('aud');
+  const song = document.getElementById('song');
+
+  // Хуудасны цэгүүд
+  pages.forEach(function(page, i) {
+
+    page.style.zIndex = n - i;
+
+    const dot = document.createElement('i');
+    dots.appendChild(dot);
+
+  });
+
+  // Хуудас солих
+  function go(k) {
+
+    cur = Math.max(0, Math.min(n - 1, k));
+
+    pages.forEach(function(page, i) {
+      page.classList.toggle('turned', i < cur);
+    });
+
+    Array.from(dots.children).forEach(function(dot, i) {
+      dot.classList.toggle('on', i === cur);
+    });
+
+    prev.disabled = cur === 0;
+    next.disabled = cur === n - 1;
+
+    const lastPage = cur === n - 1;
+
+    fin.classList.toggle('show', lastPage);
+
+    if (!lastPage && !aud.paused) {
+      aud.pause();
+    }
+
+  }
+
+  // Өмнөх хуудас
+  prev.addEventListener('click', function() {
+    go(cur - 1);
+  });
+
+  // Дараагийн хуудас
+  next.addEventListener('click', function() {
+    go(cur + 1);
+  });
+
+  // Хуруугаар гүйлгэх
+  let startX = null;
+  let startY = null;
+  let suppressClick = false;
+
+  book.addEventListener('touchstart', function(e) {
+
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+
+  }, { passive: true });
+
+  book.addEventListener('touchend', function(e) {
+
+    if (startX === null) return;
+
+    const dx =
+      e.changedTouches[0].clientX - startX;
+
+    const dy =
+      e.changedTouches[0].clientY - startY;
+
+    startX = null;
+    startY = null;
+
+    if (Math.abs(dx) > 55 &&
+        Math.abs(dx) > Math.abs(dy)) {
+
+      suppressClick = true;
+
+      if (dx < 0) {
+        go(cur + 1);
+      } else {
+        go(cur - 1);
+      }
+
+      setTimeout(function() {
+        suppressClick = false;
+      }, 400);
+
+    }
+
+  }, { passive: true });
+
+  // Дэлгэц дээр дарах
+  book.addEventListener('click', function(e) {
+
+    if (e.target.closest('#song')) return;
+
+    if (suppressClick) {
+      suppressClick = false;
+      return;
+    }
+
+    if (e.clientX < window.innerWidth * .3) {
+      go(cur - 1);
+    } else {
+      go(cur + 1);
+    }
+
+  });
+
+  // Компьютерийн сум
+  document.addEventListener('keydown', function(e) {
+
+    if (e.key === 'ArrowRight') {
+      go(cur + 1);
+    }
+
+    if (e.key === 'ArrowLeft') {
+      go(cur - 1);
+    }
+
+  });
+
+  // MP3 ДУУ ТОГЛУУЛАХ
+  song.addEventListener('click', async function(e) {
+
+    e.stopPropagation();
+
+    if (aud.paused) {
+
+      try {
+        await aud.play();
+      } catch (error) {
+        song.textContent = 'Дууг тоглуулж чадсангүй';
+        console.error(error);
+      }
+
+    } else {
+      aud.pause();
+    }
+
+  });
+
+  aud.addEventListener('play', function() {
+    song.textContent = 'Ⅱ Дуу түр зогсоох';
+  });
+
+  aud.addEventListener('pause', function() {
+    song.textContent = '♪ Дуу сонсох';
+  });
+
+  aud.addEventListener('ended', function() {
+    aud.currentTime = 0;
+    song.textContent = '↻ Дахин сонсох';
+  });
+
+  aud.addEventListener('error', function() {
+    song.textContent = 'MP3 файл олдсонгүй';
+  });
+
+  // Эхлэл
+  go(0);
+
+})();
+</script>
+
+</body>
+</html>
